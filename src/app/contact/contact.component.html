@@ -1,0 +1,56 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Contact Us</h4>
+        <div class="alert alert-primary alert-dismissible fade show" role="alert" *ngIf="contactFormSubmitted">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+          </button>
+          <strong>Data Added Sucessfully</strong>
+        </div>
+        <div class= "row">
+            <div class= "col-md-6">
+                <form novalidate #contactForm="ngForm">
+                    <div class="form-group">
+                      <label for="">Name</label>
+                      <input type="text" name="Name" id="" class="form-control" placeholder="" aria-describedby="helpId"
+                      [(ngModel)]="contact.name" #name="ngModel" >
+                    </div>
+                    <div class="form-group">
+                        <label for="">Email</label>
+                        <input type="text" name="Email_id" id="" class="form-control" placeholder="" aria-describedby="helpId"
+                        [(ngModel)]="contact.email" #email="ngModel" >
+                      </div>
+                      <div class="form-group">
+                        <label for="">Mobile No</label>
+                        <input type="text" name="Mobile_No" id="" class="form-control" placeholder="" aria-describedby="helpId"
+                        [(ngModel)]="contact.mobile" #mobile="ngModel" >
+                      </div>
+                      <div class="form-group">
+                        <label for="">Description</label>
+                        <input type="text" name="Description" id="" class="form-control" placeholder="" aria-describedby="helpId"
+                        [(ngModel)]="contact.description" #description="ngModel" 
+                        [ngClass]=" {'is-invalid' : description.errors && (description.touched || description.dirty),
+                        'is-valid' : description.valid} " required minlength="20">
+                        <div class="invalid-feedback">
+                          <strong *ngIf="description.errors?.['required'] ">
+                            Invailed description Details
+                          </strong>
+                          <strong *ngIf="description.errors?.['minLenght'] ">
+                            Invailed description Lenght
+                          </strong>
+                        </div>
+                        
+                      </div>  
+                      <button type="button" class="btn btn-primary" [disabled]="contactForm.invalid" (click)="saveDetails(contactForm.value)" >Submit</button>
+                      <button type="button" class="btn btn-default" (click)="contactForm.reset()" >Reset</button>
+
+                </form>
+            </div>
+            <div class= "col-md-6">
+              <label><strong>Json Item</strong></label><br>
+              <pre class= "alert alert-dark" > {{contactForm.value | json}} </pre>
+          </div>
+        </div>
+    </div>
+</div>

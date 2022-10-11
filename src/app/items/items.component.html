@@ -1,0 +1,34 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Candidate Details</h4>
+    </div>
+    <!--<table class="table table-striped table-inverse table-bordered">
+        <thead class="thead-inverse">
+            <tr>
+                <th>itemId</th>
+                <th>itemName</th>
+                <th>itemCategory</th>
+                <th>itemPrice</th>
+                <th>itemStock</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let result of items">
+                    <td scope="row"> {{result.itemId}} </td>
+                    <td> {{result.itemName}} </td>
+                    <td> {{result.itemCategory}} </td>
+                    <td> {{result.itemPrice | currency: 'IN '}}</td>
+                    <td> {{result.itemStock}} </td>
+                </tr>
+                <tr>
+                    <td scope="row"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+    </table>-->
+    <div class="row" >
+        <app-item class= "col-md-3" [item]="it" 
+        (removeItem)="deleteItem($event)" *ngFor="let it of items"></app-item >
+    </div>
+</div>
